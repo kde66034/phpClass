@@ -3,7 +3,6 @@
     include "../connect/session.php";
     include "../connect/sessionCheck.php";
 ?>
-
 <!DOCTYPE html>
 <html lang="ko">
 <head>
@@ -11,7 +10,6 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>게시판</title>
-
     <?php include "../include/link.php" ?>
 </head>
 <body>
@@ -21,10 +19,8 @@
         <a href="#footer">푸터 영역 바로가기</a>
     </div>
     <!-- //skip -->
-
     <?php include "../include/header.php" ?>
     <!-- //header -->
-
     <main id="main">
         <section id="board" class="container">
             <h2>게시판 영역입니다.</h2>
@@ -35,6 +31,14 @@
                 </div>
                 <div class="board__search">
                     <div class="left">
+<?php
+    $sql = "SELECT boardContents FROM myboard";
+    $result = $connect -> query($sql);
+    if($result){
+        $count = $result -> num_rows;
+        echo "총 <em>".$count."</em>건의 게시물이 등록되어 있습니다.";
+    }
+?>
                         <!-- * 총 <em>1111</em>건의 게시물이 등록되어 있습니다. -->
                     </div>
                     <div class="right">
@@ -74,31 +78,24 @@
                         </thead>
                         <tbody>
 <?php
-
     if(isset($_GET['page'])){
         $page = (int)$_GET['page'];
     } else {
         $page = 1;
     }
-
     $viewNum = 10;
     $viewLimit = ($viewNum * $page) - $viewNum;
-
     // echo $_GET['page'];
-
     //
     //1~20  --> 1page  : DESC 0,  20  ---> ($viewNum * 1) - $viewNum
     //21~40 --> 2page  : DESC 20, 20  ---> ($viewNum * 2) - $viewNum
     //41~60 --> 3page  : DESC 40, 20  ---> ($viewNum * 3) - $viewNum
     //61~80 --> 4page  : DESC 60, 20  ---> ($viewNum * 4) - $viewNum
-
     // 두개의 테이블 join
     $sql = "SELECT b.myBoardID, b.boardTitle, m.youName, b.regTime, b.boardView FROM myBoard b JOIN myMember m ON (b.myMemberID = m.myMemberID) ORDER BY myBoardID DESC LIMIT {$viewLimit}, {$viewNum}";
     $result = $connect -> query($sql);
-
     if($result){
         $count = $result -> num_rows;
-
         if($count > 0){
             for($i=1; $i <= $count; $i++){
                 $info = $result -> fetch_array(MYSQLI_ASSOC);
@@ -110,6 +107,9 @@
                 echo "<td>".$info['boardView']."</td>";
                 echo "</tr>";
             }
+        }
+        else {
+            echo "<tr><td colspan='5'>게시글이 없습니다.</td></tr>";
         }
     }
 ?>
@@ -191,41 +191,32 @@
 <?php
     $sql = "SELECT count(myBoardID) FROM myBoard";
     $result = $connect -> query($sql);
-
     $boardCount = $result -> fetch_array(MYSQLI_ASSOC);
     $boardCount = $boardCount['count(myBoardID)'];
-
+    
     // 총 페이지 개수
     $boardCount = ceil($boardCount/$viewNum);
-
     // echo $boardCount;
-
     // 현재 페이지를 기준으로 보여주고 싶은 개수
     $pageCurrent = 5;
     $startPage = $page - $pageCurrent;
     $endPage = $page + $pageCurrent;
-
     // 처음 페이지 초기화
     if($startPage < 1) $startPage = 1;
-
     // 마지막 페이지 초기화
     if($endPage >= $boardCount) $endPage = $boardCount;
-
     // 이전 페이지, 처음 페이지
     if($page != 1){
         $prevPage = $page - 1;
         echo "<li><a href='board.php?page=1'>처음으로</a></li>";
         echo "<li><a href='board.php?page={$prevPage}'>이전</a></li>";
     }
-
     // 페이지 넘버 표시
     for($i=$startPage; $i<=$endPage; $i++){
         $active = "";
         if($i == $page) $active = "active";
-
         echo "<li class='{$active}'><a href='board.php?page={$i}'>{$i}</a></li>";
     }
-
     // 다음 페이지, 마지막 페이지
     if($page != $endPage){
         $nextPage = $page + 1;
@@ -233,7 +224,6 @@
         echo "<li><a href='board.php?page={$boardCount}'>마지막으로</a></li>";
     }
 ?>
-
                         <!-- <li><a href="#">처음으로</a></li>
                         <li><a href="#">이전</a></li>
                         <li class="active"><a href="#">1</a></li>
@@ -251,7 +241,6 @@
         </section>
     </main>
     <!-- //main -->
-
     <?php include "../include/footer.php" ?>
     <!-- //footer -->
 </body>
