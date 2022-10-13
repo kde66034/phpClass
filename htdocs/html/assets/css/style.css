@@ -650,6 +650,7 @@ body.fixed {
   position: relative;
   border-bottom: 3px solid #000;
   padding: 70px 0;
+  background-color: #eee;
 }
 #joinAgree::before {
   content: "";
@@ -676,25 +677,26 @@ body.fixed {
   margin-bottom: 10px;
 }
 .agree__inner > div .desc {
-  background-color: #f5f5f5;
+  background-color: #F5F5F5;
   padding: 20px;
   color: #666;
   font-weight: 300;
   line-height: 1.5;
   height: 200px;
   overflow-y: scroll;
-  font-size: 1.1rem;
+  font-size: 1.1em;
 }
 .agree__inner .btn {
+  margin: 0 auto;
   width: 400px;
   background: #000;
+  text-align: center;
   color: #fff;
-  margin: 0 auto;
   display: block;
   font-size: 1.3rem;
   border-radius: 50px;
   padding: 0.7em;
-  text-align: center;
+  cursor: pointer;
 }
 .agree__inner .check {
   margin-top: 5px;
@@ -741,13 +743,18 @@ body.fixed {
 }
 .join__box > div input {
   border: 0;
-  background-color: #f5f5f5;
+  background-color: #F5F5F5;
   width: 100%;
   border-radius: 5px;
   padding: 20px 30px;
-  font-size: 18px;
+  font-size: 20px;
   font-weight: 300;
   box-sizing: border-box;
+}
+.join__box > div .msg {
+  width: 100%;
+  padding: 10px;
+  color: red;
 }
 
 .join__btn {
@@ -760,6 +767,66 @@ body.fixed {
   width: 100%;
   border-radius: 5px;
   cursor: pointer;
+}
+
+#join.admin {
+  padding: 110px 0 70px;
+}
+
+.join__box > div.overlap {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  flex-wrap: wrap;
+}
+.join__box > div.overlap label {
+  width: 100%;
+}
+.join__box > div.overlap input {
+  width: 78%;
+}
+.join__box > div.overlap .check {
+  background: #000;
+  color: #fff;
+  padding: 13px 30px;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  width: 20%;
+  text-align: center;
+  font-size: 20px;
+  line-height: 32px;
+}
+.join__box > div.overlap .msg {
+  width: 100%;
+  padding: 10px;
+  color: red;
+}
+.join__box .list h3 {
+  font-size: 20px;
+  margin-bottom: 5px;
+}
+.join__box .list ul {
+  padding: 20px;
+  background: #fff;
+  border-radius: 5px;
+}
+.join__box .list ul li {
+  font-size: 18px;
+  line-height: 1.4;
+  color: #666;
+}
+.join__box span {
+  display: block;
+  padding: 10px 0;
+}
+.join__box span input {
+  width: auto;
+}
+.join__box span label {
+  display: inline-block;
+  font-size: 18px;
 }
 
 #board h2 {
@@ -1030,4 +1097,90 @@ body.fixed {
   font-size: 22px;
   margin-bottom: 80px;
   font-weight: 300;
+}
+
+#blogWrite {
+  text-align: center;
+  padding: 100px 0 0;
+}
+#blogWrite h2 {
+  margin-bottom: 60px;
+}
+
+.write__inner {
+  text-align: left;
+  padding-bottom: 50px;
+  position: relative;
+  border-bottom: 3px solid #000;
+}
+.write__inner::before {
+  content: "";
+  width: 100%;
+  height: 1px;
+  background: #000;
+  position: absolute;
+  left: 0;
+  bottom: -8px;
+}
+.write__inner legend {
+  display: block;
+  overflow: hidden;
+  font-size: 0;
+  line-height: 0;
+  text-indent: -9999px;
+}
+.write__inner label {
+  display: block;
+  margin-top: 20px;
+  margin-bottom: 10px;
+}
+.write__inner #blogCate {
+  width: 20%;
+  padding: 10px;
+  background: #fff;
+  border: 0;
+  border-radius: 5px;
+  font-size: 18px;
+}
+.write__inner #blogTitle {
+  width: 100%;
+  border: 1px solid #c6c6c6;
+  padding: 13px 20px;
+  font-size: 1rem;
+  border-radius: 5px;
+  color: #666;
+  box-sizing: border-box;
+  font-size: 18px;
+  border: 0;
+}
+.write__inner #blogContents {
+  width: 100%;
+  height: 400px;
+  resize: none;
+  background: #fff;
+  border: 0;
+  border-radius: 5px;
+  padding: 20px;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+.write__inner #blogFile {
+  width: 100%;
+  background: #fff;
+  border: 0;
+  padding: 20px;
+  border-radius: 5px;
+  font-size: 18px;
+  box-sizing: border-box;
+}
+.write__inner button {
+  background: #000;
+  color: #fff;
+  padding: 13px 30px;
+  display: inline-block;
+  border-radius: 5px;
+  font-size: 1rem;
+  box-sizing: border-box;
+  float: right;
+  margin-top: 20px;
 }
