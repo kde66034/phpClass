@@ -32,12 +32,12 @@
                     <fieldset>
                         <legend>블로그 게시글 작성 영역</legend>
                         <div>
-                            <label for="blogCate">카테고리</label>
-                            <select name="blogCate" id="blogCate">
-                                <option value="javascript">javascript</option>
-                                <option value="jquery">jquery</option>
-                                <option value="html">html</option>
-                                <option value="css">css</option>
+                            <label for="blogCategory">카테고리</label>
+                            <select name="blogCategory" id="blogCategory">
+                                <option value="javascript">JavaScript</option>
+                                <option value="jquery">jQuery</option>
+                                <option value="html">HTML</option>
+                                <option value="css">CSS</option>
                             </select>
                         </div>
                         <div>
