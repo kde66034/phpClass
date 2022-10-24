@@ -13,10 +13,42 @@
   @include flex_sb;
   @include border_bottom;
   padding-bottom: 70px;
+  align-items: flex-start;
 
-  > div {
+  &.horizon {
+    .card {
+      width: 100%;
+      display: flex;
+      margin-bottom: 20px;
+      justify-content: space-between;
+
+      h3 {
+        margin-top: 0;
+      }
+
+      figure {
+        width: 30%;
+      }
+      > div {
+        width: 67%;
+      }
+    }
+  }
+
+  .card {
+    position: relative;
     width: 24%;
-    
+
+    .cate {
+      position: absolute;
+      left: 10px;
+      top: 10px;
+      background: #fff;
+      font-size: 14px;
+      padding: 3px 10px;
+      border-radius: 30px;
+    }
+
     figure {
       position: relative;
       overflow: hidden;
@@ -50,16 +82,24 @@
         transform: translateX(0) rotate(0);
       }
     }
-    
     h3 {
       font-size: 1.3rem;
-      line-height: 2;
+      line-height: 1.6;
       margin-top: 0.3em;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      white-space: nowrap;
+      margin-bottom: 5px;
     }
     p {
       font-size: 1rem;
       font-weight: 300;
       line-height: 1.5;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      display: -webkit-box;
+      -webkit-line-clamp: 3; 
+      -webkit-box-orient: vertical;
     }
   }
 }
